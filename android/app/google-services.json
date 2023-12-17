@@ -1,10 +1,30 @@
 {
   "project_info": {
     "project_number": "179007834178",
+    "firebase_url": "https://nmtc-hackathon-status-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "nmtc-hackathon-status",
     "storage_bucket": "nmtc-hackathon-status.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179007834178:android:cfadd498440179e15985db",
+        "android_client_info": {
+          "package_name": "com.omar.nmtc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYxkuorqjEQCk6NryITx56KtCZAc0pi9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:179007834178:android:74442b14c105c1125985db",

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,11 +46,22 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDaW4hT9xVWAyUbcXogu1VN3CxwfK_d214',
+    appId: '1:179007834178:web:739fb8f0eca953815985db',
+    messagingSenderId: '179007834178',
+    projectId: 'nmtc-hackathon-status',
+    authDomain: 'nmtc-hackathon-status.firebaseapp.com',
+    databaseURL: 'https://nmtc-hackathon-status-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'nmtc-hackathon-status.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBYxkuorqjEQCk6NryITx56KtCZAc0pi9k',
     appId: '1:179007834178:android:74442b14c105c1125985db',
     messagingSenderId: '179007834178',
     projectId: 'nmtc-hackathon-status',
+    databaseURL: 'https://nmtc-hackathon-status-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'nmtc-hackathon-status.appspot.com',
   );
 
@@ -62,6 +70,7 @@ class DefaultFirebaseOptions {
     appId: '1:179007834178:ios:9e56142abac771945985db',
     messagingSenderId: '179007834178',
     projectId: 'nmtc-hackathon-status',
+    databaseURL: 'https://nmtc-hackathon-status-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'nmtc-hackathon-status.appspot.com',
     iosBundleId: 'com.omar.nmtc.nmtcHackathonStatus',
   );

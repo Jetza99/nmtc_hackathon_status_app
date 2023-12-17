@@ -43,6 +43,7 @@ class _StatusScreenState extends State<StatusScreen> {
       child: SafeArea(
         child: Scaffold(
           body: Container(
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xFF6E0DAD), Color(0xFF0062A3)],
@@ -70,7 +71,7 @@ class _StatusScreenState extends State<StatusScreen> {
                       .toList();
 
                   return Column(
-                    mainAxisSize: MainAxisSize.max,
+                    //mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
                         'NMTC V4.0',
@@ -89,8 +90,6 @@ class _StatusScreenState extends State<StatusScreen> {
                           color: Colors.white,
                         ),
                       ),
-
-
                       SizedBox(height: 20),
                       Column(
                         children: [
@@ -119,26 +118,38 @@ class _StatusScreenState extends State<StatusScreen> {
                           SizedBox(
                             height: 30,
                           ),
-                          for (var userData in userDataList)
-                            Column(
-                              children: [
-                                Organizer(
+                          Container(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                            child: ListView.separated(
+                              itemCount: userDataList.length,
+                              separatorBuilder: (context, index) => SizedBox(height: 20), // Add separator height
+                              itemBuilder: (context, index) {
+                                var userData = userDataList[index];
+                                return Organizer(
                                   name: userData['name'] ?? 'N/A',
                                   status: userData['status'] ?? 'N/A',
                                   number: userData['number'] ?? 'N/A',
-                                ),
-                                SizedBox(height: 20),
-                              ],
+                                );
+                              },
                             ),
+                          ),
                         ],
                       ),
                       Spacer(),
-                      Row(
+                      Column(
                         children: [
-                          buildStatusButton('Free'),
-                          buildStatusButton('Busy'),
-                          buildStatusButton('On Duty'),
-                          buildStatusButton('On Break'),
+                          Wrap(
+                            spacing: 8.0, // Adjust as needed
+                            runSpacing: 8.0, // Adjust as needed
+                            alignment: WrapAlignment.spaceEvenly,
+                            children: [
+                              buildStatusButton('Free'),
+                              buildStatusButton('Busy'),
+                              buildStatusButton('On Duty'),
+                              buildStatusButton('On Break'),
+                              // Add more buttons as needed
+                            ],
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -288,7 +299,6 @@ class Organizer extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () async {
-              var url = 'tel:${number}';
               launchUrl(Uri(scheme: 'tel', path: number));
             },
             child: Icon(
